@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('timesheets', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('calendar_id');
+            $table->foreignId('user_id');
+            $table->enum('type', ['work','pause'])->default('work');
+            $table->timestamp('day_in');
+            $table->date('day_outt');
             $table->timestamps();
         });
     }
